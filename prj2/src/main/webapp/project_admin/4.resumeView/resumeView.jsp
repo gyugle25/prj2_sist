@@ -215,8 +215,7 @@ function goToList(jobNum) {
     	ResumeInfoVO rVO = aDAO.selectInfo(applyNum);
     
     
-    
-    	//복호화
+    	//회원 정보 복호화
 		DataDecrypt dd=new DataDecrypt("FsRt4SfY4US0IWtK4JPJsw==");
 	    
 	    rVO.setName(dd.decryption( rVO.getName() ));
@@ -227,7 +226,7 @@ function goToList(jobNum) {
 	    
     	
     	//스킬 - csv로 합쳐서 출력하려고 VO말고 걍 String으로 받음
-    	skills = aDAO.selectSkills(applyNum); //매개변수가 지원번호면 될거같은데
+    	skills = aDAO.selectSkills(applyNum);
     	
     	
     	//자격증명
@@ -236,8 +235,6 @@ function goToList(jobNum) {
     	
     	//학력 - 조회결과 없으면 배열 길이가 0
     	eduList = aDAO.selectEudcations(applyNum);
-    	
-    	
     	
     	schoolType = eduList.get(0).getSchoolType();
     	schoolName = eduList.get(0).getSchoolName();
@@ -250,17 +247,14 @@ function goToList(jobNum) {
     
         
     	
-    	//업데이트 - 0 이상이면 성공!
+    	//열람 상태 업데이트 - 0 이상이면 성공!
     	int result = aDAO.updateReadState(applyNum);
       	
-    
-    	
-    	
-    	
     	
     	
     	// 공고번호를 JSP 컨텍스트에 저장
     	pageContext.setAttribute("jobNum", jobNum);
+    	
     	
     	
   	////////여기 전까지 모두 복화화된 상태여야함//////////////////////

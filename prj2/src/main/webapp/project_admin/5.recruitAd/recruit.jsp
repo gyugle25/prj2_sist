@@ -244,11 +244,10 @@ a { text-decoration-line: none; }
 
 
 
-//등록된 기업명이면 숨겨진 div 보여주기 (입력 양식 노출)
 $(function(){
 	
 	
-	//조회하기 버튼을 눌렀을 때
+	//기업명으로 조회하기 버튼
 	$("#corpbtn").click(function() {
 		$("#frm").submit();
 	});//click
@@ -261,11 +260,13 @@ $(function(){
 	}//end if
 	
 	
+	//첨부파일 버튼
 	$('#detailbtn').on('click', function() {
 	    $('#file').click(); // 파일 선택 대화상자 열기
 	  });
 	
 	
+	//첨부파일명 얻기
 	$('#file').on('change', function() {
         var fileName = $(this).val().split('\\').pop(); //개발자 모집.jpg
         $('#description').val(fileName);
@@ -393,14 +394,12 @@ pageContext.setAttribute("nameC", company);
 			<input type="text" name="cName" class="contxtR" id="corpName" placeholder="ex)쌍용교육센터" value="${ nameC }" ${ nameC eq null?"":"readonly='readonly'" }
 						/>
 			<input type="button" value="조회하기" id="corpbtn"/>
-			<!-- <input type="button" value="조회하기" id="corpbtn" onClick="btnClick()"/> -->
 		</div>
 		</form>
 		</div>
 	<div id="container1" style="display:none">
-		<form id="frm2" name="frm2" method="post" action="http://localhost/prj2/project_admin/5.recruitAd/recruit_process.jsp" enctype="multipart/form-data">
-		
-		<input type="hidden" value="${ nameC }" name="company"> <!-- 히든이 유용한 이유.... -규미 -->
+		<form id="frm2" name="frm2" method="post" action="http://localhost/prj2/project_admin/5.recruitAd/recruit_process.jsp" enctype="multipart/form-data">		
+		<input type="hidden" value="${ nameC }" name="company">
 		<div id="recruitTitle">
 			<p class="titles">채용공고 제목</p>
 			<input type="text" class="contxtR" id="title" name="title" placeholder="채용공고 제목을 입력해주세요."/>

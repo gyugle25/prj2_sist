@@ -311,12 +311,11 @@ if(list.size()==0){ //검색된 결과가 없으면
    <td><c:out value="${aVO.name }"/></td>
    <td>
    
-   <%-- CSV 형태의 데이터를 담고 있는 변수를 배열로 분리 --%>
+   <%-- CSV 형태의 데이터를 담고 있는 변수를 분리하고 줄바꿈 --%>
     <c:set var="majorArr" value="${fn:split(aVO.major, ',')}" />
     <c:forEach items="${majorArr}" var="majorElement">
       <c:out value="${majorElement}" /><br/>
     </c:forEach>
-   
    </td><%-- 학력 --%>
    <td><c:out value="${aVO.career}" /></td><%-- 경력 --%>
    <td><c:out value="${aVO.applyDate}" /></td><%-- 지원일 --%>
